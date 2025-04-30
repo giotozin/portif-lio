@@ -56,13 +56,58 @@
       color: white;
     }
 
-    a {
-      color: #a05252;
-      text-decoration: none;
+    button {
+      background-color: #d4a5a5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-family: Georgia, serif;
     }
 
-    a:hover {
-      text-decoration: underline;
+    button:hover {
+      background-color: #b77b7b;
+    }
+
+    /* POP-UP */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .popup-conteudo {
+      background-color: #fff0f5;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #e6c3d3;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .fechar {
+      color: #a05252;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .popup-conteudo img {
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -81,28 +126,80 @@
   <section>
     <h2>Meus Projetos</h2>
 
+    <!-- Projeto 1 -->
     <div class="project">
       <h3>🌺 Site Pessoal Estilo Vintage</h3>
       <p>Um site com tema retrô que mistura rosa antigo, tipografia clássica e um toque poético.</p>
-      <a href="#">Ver projeto</a>
+      <button onclick="abrirPopup('popup1')">Ver projeto</button>
     </div>
 
+    <!-- Projeto 2 -->
     <div class="project">
       <h3>🎞️ Galeria de Fotos Artísticas</h3>
       <p>Uma galeria com mood cinematográfico e vibes nostálgicas dos anos 60 e 70.</p>
-      <a href="#">Ver projeto</a>
+      <button onclick="abrirPopup('popup2')">Ver projeto</button>
     </div>
 
+    <!-- Projeto 3 -->
     <div class="project">
       <h3>🎵 Playlist Interativa de Lana</h3>
       <p>Web app simples com integração ao Spotify para ouvir suas músicas favoritas da Lana Del Rey.</p>
-      <a href="#">Ver projeto</a>
+      <button onclick="abrirPopup('popup3')">Ver projeto</button>
     </div>
   </section>
+
+  <!-- Pop-up 1 -->
+  <div id="popup1" class="popup">
+    <div class="popup-conteudo">
+      <span class="fechar" onclick="fecharPopup('popup1')">&times;</span>
+      <h3>Site Pessoal Estilo Vintage</h3>
+      <img src="imagens/vintage1.jpg" alt="Vintage 1">
+      <img src="imagens/vintage2.jpg" alt="Vintage 2">
+    </div>
+  </div>
+
+  <!-- Pop-up 2 -->
+  <div id="popup2" class="popup">
+    <div class="popup-conteudo">
+      <span class="fechar" onclick="fecharPopup('popup2')">&times;</span>
+      <h3>Galeria de Fotos Artísticas</h3>
+      <img src="imagens/galeria1.jpg" alt="Galeria 1">
+      <img src="imagens/galeria2.jpg" alt="Galeria 2">
+    </div>
+  </div>
+
+  <!-- Pop-up 3 -->
+  <div id="popup3" class="popup">
+    <div class="popup-conteudo">
+      <span class="fechar" onclick="fecharPopup('popup3')">&times;</span>
+      <h3>Playlist Interativa</h3>
+      <img src="imagens/playlist1.jpg" alt="Playlist 1">
+      <img src="imagens/playlist2.jpg" alt="Playlist 2">
+    </div>
+  </div>
 
   <footer>
     <p>Feito com amor e inspiração por Giovana Tozin, Maria Fernanda e Isabela Ramos | © 2025</p>
   </footer>
+
+  <script>
+    function abrirPopup(id) {
+      document.getElementById(id).style.display = "block";
+    }
+
+    function fecharPopup(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const popups = document.querySelectorAll(".popup");
+      popups.forEach(function(popup) {
+        if (event.target === popup) {
+          popup.style.display = "none";
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
